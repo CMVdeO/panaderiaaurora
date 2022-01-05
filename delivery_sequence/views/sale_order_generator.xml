@@ -68,10 +68,16 @@
 
   <!-- actions -->
 
-  <menuitem id="delivery_sequence_sale_order_generator_list_menu"
+  <menuitem id="delivery_sequence_sale_order_generator_list_menu_sale"
     name="Generador de pedidos"
     parent="sale.sale_order_menu"
     action="sale_order_generator_action_window"
     sequence="2" />
+
+  <menuitem id="delivery_sequence_sale_order_generator_list_menu"
+    name="Generador de pedidos"
+    parent="delivery_sequence_manager_menu"
+    action="sale_order_generator_action_window"
+    sequence="10" />
 
 </odoo>

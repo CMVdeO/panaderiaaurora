@@ -61,7 +61,8 @@ class SaleOrderGenerater(models.TransientModel):
             print(int(items.route_id))
             print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
             sale_data_presort = self.env['delivery_sequence.partner_lap'].search([('team_id','=',int(items.team_id)),('lap_id','=',int(items.lap_id)),('day','=',items.day),('holiday','=',items.holiday),])
-            sale_data = sale_data_presort.sorted(lambda s: s.sort_sequence)
+            sale_data = sale_data_presort.sorted(lambda s: s.stored_sequence)
+            print('Se Ordena por stored Sequence')
             #('team_id','=',int(items.team_id))
             #, order="partner_id.sort_sequence asc")
 
