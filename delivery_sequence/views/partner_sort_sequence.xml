@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- res.partner -->
+  <record id="partner_sort_sequence_tree" model="ir.ui.view">
+    <field name="name">delivery_sequence.partner_sort_sequence.tree</field>
+    <field name="model">res.partner</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name" string="Cliente" attrs="{'readonly': [('id', '>', 0)]}" required="1" />
+        <field name="sort_sequence" string="Secuencia" widget="handle" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="partner_sort_sequence_form" model="ir.ui.view">
+    <field name="name">delivery_sequence.partner_sort_sequence.form</field>
+    <field name="model">res.partner</field>
+    <field name="arch" type="xml">
+        <form>
+          <sheet>
+              <group>
+                  <group>
+                    <field name="name" string="Cliente" attrs="{'readonly': [('id', '>', 0)]}" required="1" />
+                    <field name="sort_sequence" string="Secuencia" />
+                  </group>
+              </group>
+          </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Actions -->
+
+  <record id="partner_sort_sequence_action_window" model="ir.actions.act_window">
+    <field name="name">Lista de cliente con secuencia en ruta</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">tree,kanban,form</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            Create your first Lap!
+        </p>
+    </field>
+  </record>
+
+
+  <!-- Top menu item -->
+
+  <menuitem id="delivery_sequence_root_menu"
+    name="Reparto" />
+
+  <!-- menu categories -->
+
+  <menuitem id="delivery_sequence_manager_menu"
+    name="Administrar"
+    parent="delivery_sequence_root_menu" />
+
+  <!-- actions -->
+<!--
+  <menuitem id="delivery_sequence_partner_sort_sequence_list_menu"
+    name="Lista de cliente con secuencia en ruta"
+    parent="delivery_sequence_manager_menu"
+    action="partner_sort_sequence_action_window" /> -->
+
+</odoo>

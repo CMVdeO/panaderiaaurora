@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="sale_order_generator_form" model="ir.ui.view">
+    <field name="name">delivery_sequence.sale_order_generator.wizard.form</field>
+    <field name="model">delivery_sequence.sale_order_generator.wizard</field>
+    <field name="arch" type="xml">
+      <form string="Filtro para la generación de pedidos">
+        <sheet>
+          <group>
+            <group>
+              <field name="team_id" string="Ruta" widget='selection' required="1" />
+              <field name="lap_id" string="Vuelta" widget='selection' required="1" />
+              <field name="day" string="Día" required="1" />
+            </group>
+            <group>
+              <field name="holiday" string="Feriado?" widget='checkbox' required="1" />
+              <field name="employee_id" string="Vendedor[Nombre]" widget='selection' required="1" />
+              <field name="route_id" string="Vendedor[Ruta]" widget='selection' required="1" />
+            </group>
+          </group>
+        </sheet>
+        <footer>
+            <button name="action_generator" string="Generar pedidos" class="btn-primary" type="object" confirm="Esto generará varios pedidos. ¿Estás seguro?" />
+            <button string="Cancelar" class="btn-secondary" special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <!-- Actions -->
+
+  <record id="sale_order_generator_action_window" model="ir.actions.act_window">
+    <field name="name">Generador de pedidos</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">delivery_sequence.sale_order_generator.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="sale_order_generator_form" />
+    <field name="target">new</field>
+  </record>
+
+
+  <record id="message_generator_wizard" model="ir.ui.view">
+    <field name="name">Mensaje</field>
+    <field name="model">delivery_sequence.message.wizard</field>
+    <field name="arch" type="xml">
+    <form>
+        <group>
+            <field name="message"/>
+        </group>
+        <footer>
+          <button name="redirect_to_list" string="Ir a lista" class="btn-primary" type="object" />
+        </footer>
+    </form>
+    </field>
+</record>
+
+  <!-- Top menu item -->
+
+  <menuitem id="delivery_sequence_root_menu"
+    name="Reparto" />
+
+  <!-- menu categories -->
+
+  <menuitem id="delivery_sequence_manager_menu"
+    name="Administrar"
+    parent="delivery_sequence_root_menu" />
+
+  <!-- actions -->
+
+  <menuitem id="delivery_sequence_sale_order_generator_list_menu"
+    name="Generador de pedidos"
+    parent="sale.sale_order_menu"
+    action="sale_order_generator_action_window"
+    sequence="2" />
+
+</odoo>

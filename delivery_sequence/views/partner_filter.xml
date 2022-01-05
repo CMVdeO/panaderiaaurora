@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="partner_filter_form_view" model="ir.ui.view">
+        <field name="name">partner.filter.form</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="team_id" string="Equipo encargado"/>
+                            <field name='name' string="Nombre"/>
+                        </group>
+                        <group>
+                            <field name="stored_sequence" string="Orden guardado" readonly='1'/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="partner_filter_tree_view" model="ir.ui.view">
+        <field name="name">partner.filter.tree</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <field name="name" string="Nombre"/>
+                <field name="team_id" string="Equipo encargado"/>
+                <field name="sort_sequence" string="Secuencia" widget="handle"/>
+                <field name="path_sequence" string="Orden"/>
+                <field name="partner_lap_ids" string="Vueltas"/>
+                <field name="city" string="Ciudad"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Actions -->
+<!--
+    <record id="partner_filter_action" model="ir.actions.act_window">
+        <field name="name">Clientes filtrados por ruta</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[('team_id','=',6)]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('partner_filter_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('partner_filter_form_view')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Lap!
+            </p>
+        </field>
+    </record> -->
+
+
+</odoo>
