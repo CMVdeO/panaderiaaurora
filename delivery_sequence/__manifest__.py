@@ -23,8 +23,10 @@ Match Partner - Lap - Product
     # any module necessary for this one to work correctly
     'depends': [
         'product',
-        'sale',
-        'crm',
+        'sale_management',
+        'stock',
+        'hr',
+        'contacts',
     ],
 
     # always loaded
@@ -48,4 +50,5 @@ Match Partner - Lap - Product
     'installable': True,
     'auto_install': False,
     'application': True,
+    'license': 'LGPL-3',
 }

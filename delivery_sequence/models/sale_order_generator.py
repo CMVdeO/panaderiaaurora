@@ -107,6 +107,8 @@ class SaleOrderGenerater(models.TransientModel):
                     # No siempre un empleado tiene un usuario asociado
                     if items.employee_id.user_id:
                         order['user_id'] = int(items.employee_id.user_id)
+                    if items.employee_id.user_id.property_warehouse_id:
+                        order['warehouse_id'] = int(items.employee_id.user_id.  property_warehouse_id)
                     print(order)
                     print("22ssssssaaaaaaaaaaaassssssssssssaasasas")
 
