@@ -34,7 +34,9 @@
               <field name="holiday"  attrs="{'readonly': [('id', '>', 0)]}" string="Feriado?" />
               <field name="partner_lap_product_ids" string="Productos en vuelta">
                 <tree editable="bottom">
+
                   <field name="product_id" string='Producto'  />
+
                   <field name="quantity"  string='Cantidad' />
                 </tree>
               </field>
