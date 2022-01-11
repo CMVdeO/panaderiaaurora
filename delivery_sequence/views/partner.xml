@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="view_partner_tree_inherit" model="ir.ui.view">
+    <field name="name">res.partner.tree.inherited</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_tree" />
+    <field name="arch" type="xml">
+      <field name="city" position="before">
+        <field name="team_id" string="Ruta" />
+        <field name="stored_sequence" string='Orden' />
+        <field name="partner_lap_ids" string="Vueltas"/>
+      </field>
+    </field>
+  </record>
+
+  <record id="view_partner_form_inherit" model="ir.ui.view">
+    <field name="name">res.partner.form.inherited</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form" />
+    <field name="arch" type="xml">
+      <page name="sales_purchases">
+        <group name="container_row_2">
+          <group name="delivery" string="Reparto" attrs="{'invisible': [('is_company', '=', False)]}"  >
+            <field name="team_id" string="Ruta" widget="selection" />
+            <field name="stored_sequence" string="Orden de impresión" />
+            <field name="partner_lap_ids" string="Vueltas"  >
+              <tree string="Vueltas" create="false" default_order="lap_id asc, day asc, holiday asc" >
+                <field name="lap_id" />
+                <field name="day" />
+                <field name="holiday" />
+                <field name="partner_lap_product_ids" string="Productos por vuelta" />
+              </tree>
+            </field>
+            <button name="create_all_laps" string="Generar vueltas" class="btn-primary oe_edit_only" type="object" confirm="Se generaran vueltas sin afectar a las ya creadas actualmente ¿Estás seguro?" />
+          </group>
+        </group>
+      </page>
+    </field>
+  </record>
+
+</odoo>

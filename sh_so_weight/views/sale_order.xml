@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sh_so_weight" model="ir.ui.view">
+        <field name="name">sale.order.line.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='price_unit']" position="before">
+                <field name="product_weight" optional="show"/>
+                <field name="total_product_weight" optional="show"/>
+                <field name="product_volume" optional="show"/>
+                <field name="total_product_volume" optional="show"/>
+            </xpath>
+
+            <field name="amount_total" position="after">
+                <field name="total_product_weight" readonly="True" />
+                <field name="total_product_volume" readonly="True" />
+            </field>
+        </field>
+    </record>
+
+    <record id="sh_so_total_sale_order" model="ir.ui.view">
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"></field>
+        <field name="arch" type="xml">
+            <field name="amount_total" position="after">
+                <field name="total_product_weight" optional="show" />
+                <field name="total_product_volume" optional="show" />
+            </field>
+        </field>
+    </record>
+
+    <record id="sh_so_total_sale_quotation" model="ir.ui.view">
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"></field>
+        <field name="arch" type="xml">
+            <field name="amount_total" position="after">
+                <field name="total_product_weight" optional="show" />
+                <field name="total_product_volume" optional="show" />
+            </field>
+        </field>
+    </record>
+</odoo>

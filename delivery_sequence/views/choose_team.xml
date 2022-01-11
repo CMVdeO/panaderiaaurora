@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_choose_team_form" model="ir.ui.view">
+        <field name="name">delivery_sequence.choose_team.wizard.form</field>
+        <field name="model">delivery_sequence.choose_team.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Elige la ruta a ver">
+                <group>
+                    <group>
+                        <field name="team_id" widget="selection"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Buscar lista" name="action_create_list" type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_choose_team" model="ir.actions.act_window">
+        <field name="name">Elegir Ruta</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delivery_sequence.choose_team.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_choose_team_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="delivery_choose_team"
+        name="Orden de clientes por ruta"
+        parent="delivery_sequence_manager_menu"
+        action="action_choose_team"
+        sequence="30"/>
+
+</odoo>
