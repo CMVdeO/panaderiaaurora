@@ -18,5 +18,6 @@ Set Production Team in Manufacturing.
     ],
     'installable': True,
     'auto_install': True,
-    'application': False
+    'application': False,
+    'license': 'LGPL-3'
 }

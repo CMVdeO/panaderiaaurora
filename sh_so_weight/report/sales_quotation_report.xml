@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- sale quotation report -->
+    <template id="sh_so_weight_report" inherit_id="sale.report_saleorder_document">
+        <th name="th_quantity" position="after">
+	        <th name="th_weight" class="text-right">Weight (kg)</th>
+	        <th name="th_total_weight" class="text-right">Total Weight (kg)</th>
+	        <th name="th_volume" class="text-right">Volume (m³)</th>
+	        <th name="th_total_volume" class="text-right">Total Volume (m³)</th>
+		</th>
+		
+        <xpath expr="//td[@name='td_quantity']" position="after">
+            <td class="text-right">
+                <span t-field="line.product_weight"></span>
+            </td>
+            <td class="text-right">
+                <span t-field="line.total_product_weight"></span>
+            </td>
+            <td class="text-right">
+                <span t-field="line.product_volume"></span>
+            </td>
+            <td class="text-right">
+                <span t-field="line.total_product_volume"></span>
+            </td>
+        </xpath>
+
+        <xpath expr="//div[@name='so_total_summary']//table//tr[2]" position="after">
+            <tr>
+                <td><strong>Total Weight (kg)</strong></td>
+                <td class="text-right"><span t-field="doc.total_product_weight"></span></td>
+            </tr>
+            <tr>
+                <td><strong>Total Volume (m³)</strong></td>
+                <td class="text-right"><span t-field="doc.total_product_volume"></span></td>
+            </tr>
+        </xpath>
+    </template>
+</odoo>
